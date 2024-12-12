@@ -1,0 +1,20 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
+<head>
+    <title>Add Employee</title>
+</head>
+<body>
+<h1>Add Employee</h1>
+<form t:type="form" t:action="submit">
+    <label for="name">Name:</label>
+    <input t:id="name" t:value="name" t:type="TextField" type="text" /><br />
+
+    <label for="age">Age:</label>
+    <input t:id="age" t:value="age" t:type="TextField"  type="number" /><br />
+
+    <label for="address">Address:</label>
+    <input t:id="address" t:value="address" t:type="TextField" type="text" /><br />
+
+    <input type="submit" value="Add Employee" />
+</form>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+<head>
+    <title>Employee List</title>
+</head>
+<body>
+<h1>Employee List</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Address</th>
+    </tr>
+    <tr t:each="employee : employees">
+        <td><a t:href="employeeDetails/${employee.id}">${employee.name}</a></td>
+        <td>${employee.age}</td>
+        <td>${employee.address}</td>
+    </tr>
+</table>
+</body>
+</html>

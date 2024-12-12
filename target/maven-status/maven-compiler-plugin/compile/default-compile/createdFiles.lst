@@ -1,0 +1,6 @@
+com\example\employee\pages\EmployeeList.class
+com\example\employee\pages\EmployeeDetails.class
+com\example\employee\entities\Employee.class
+com\example\employee\pages\AddEmployee.class
+com\example\employee\services\MyEmpModule.class
+com\example\employee\pages\Login.class
