@@ -3,6 +3,7 @@
     <title>Add Employee</title>
 </head>
 <body>
+<t:Header title="literal:Welcome to the AddEmployee Page" /><hr/>
 <h1>Add Employee</h1>
 <form t:type="form" t:action="submit">
     <label for="name">Name:</label>

@@ -1,0 +1,8 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+<div class="employee-summary">
+    <h3>Employee Summary</h3>
+    <p><strong>Name:</strong> ${employee.name}</p>
+    <p><strong>Age:</strong> ${employee.age}</p>
+    <p><strong>Address:</strong> ${employee.address}</p>
+</div>
+</html>

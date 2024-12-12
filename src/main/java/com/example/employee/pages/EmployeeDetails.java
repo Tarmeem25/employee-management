@@ -2,7 +2,7 @@ package com.example.employee.pages;
 
 import com.example.employee.entities.Employee;
 import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.ioc.annotations.Inject;
+
 
 public class EmployeeDetails {
     @Property

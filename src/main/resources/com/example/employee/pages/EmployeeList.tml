@@ -1,9 +1,12 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+
 <head>
     <title>Employee List</title>
 </head>
 <body>
+<t:Header title="literal:Welcome to the EmployeeList Page" /><hr/>
 <h1>Employee List</h1>
+
 <table>
     <tr>
         <th>Id</th>

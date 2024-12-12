@@ -3,9 +3,9 @@
     <title>Employee Details</title>
 </head>
 <body>
+<t:Header title="literal:Welcome to the EmployeeDetails Page" /><hr/>
 <h1>Employee Details</h1>
-<p>Name: ${employee.name}</p>
-<p>Age: ${employee.age}</p>
-<p>Address: ${employee.address}</p>
+<t:EmployeeSummary employee="employee"/>
+
 </body>
 </html>
