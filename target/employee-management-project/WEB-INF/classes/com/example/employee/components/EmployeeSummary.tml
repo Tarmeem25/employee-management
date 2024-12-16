@@ -1,0 +1,8 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+
+<t:grid source="employees" row="employee">
+    <t:column>
+        <t:EmployeeSummary employee="employee" />
+    </t:column>
+</t:grid>
+</html>

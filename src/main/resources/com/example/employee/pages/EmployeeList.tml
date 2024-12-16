@@ -1,0 +1,42 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+
+<head>
+    <title>Employee List</title>
+</head>
+<body>
+<t:Header title="literal:Welcome to the EmployeeList Page" /><hr/>
+<h1>Employee List</h1>
+
+<t:grid source="employees" rowsPerPage="2" row="employee">
+<t:column>
+    <b>ID:</b> ${employee.id}
+</t:column:ce>
+<t:column>
+    <b>Name:</b> ${employee.name}
+</t:column>
+<t:column>
+    <b>Age:</b> ${employee.age}
+</t:column>
+<t:column>
+    <b>Address:</b> ${employee.address}
+</t:column>
+</t:grid>
+
+</body>
+</html>
+        <!--<table>-->
+        <!--    <tr>-->
+        <!--        <th>Id</th>-->
+        <!--        <th>Name</th>-->
+        <!--        <th>Age</th>-->
+        <!--        <th>Address</th>-->
+        <!--    </tr>-->
+        <!--    <t:loop source ="employees" value= "employee" >-->
+        <!--        <tr>-->
+        <!--            <td>${employee.id}</td>-->
+        <!--            <td>${employee.name}</td>-->
+        <!--        <td>${employee.age}</td>-->
+        <!--        <td>${employee.address}</td>-->
+        <!--    </tr>-->
+        <!--    </t:loop>-->
+        <!--</table>-->
