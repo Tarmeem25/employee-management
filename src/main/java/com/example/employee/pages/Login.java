@@ -1,6 +1,7 @@
 package com.example.employee.pages;
 
 
+import com.example.employee.services.LoginService;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.http.Link;
@@ -16,27 +17,17 @@ public class Login {
     private String username;
     @Property
     private String password;
-    @InjectPage
-    private EmployeeList employeeList;
-
     @Inject
-    private Response response;
+    private LoginService loginService;
 
-    @Inject
-    private PageRenderLinkSource pageRenderLinkSource;
-
-
-    private static final String VALID_USERNAME = "admin";
-    private static final String VALID_PASSWORD = "password123";
-
-    public void onSubmit() throws IOException {
-        if (VALID_USERNAME.equals(username) && VALID_PASSWORD.equals(password)) {
-            Link link = pageRenderLinkSource.createPageRenderLink(EmployeeList.class);
-            // Redirect to EmployeeList page
-            response.sendRedirect(link.toAbsoluteURI());
-        } else {
-            // Handle invalid login
+    public Object onSuccess() {
+        if (loginService.validateLogin(username, password)) {
+            System.out.println("Login successful");
+            return EmployeeDetails.class;
         }
+        return null;
     }
+
+
 }
 

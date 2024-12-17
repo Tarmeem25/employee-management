@@ -1,25 +1,19 @@
-<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
 
 <head>
     <title>Employee List</title>
 </head>
 <body>
-<t:Header title="literal:Welcome to the EmployeeList Page" /><hr/>
+
 <h1>Employee List</h1>
 
-<t:grid source="employees" rowsPerPage="2" row="employee">
-<t:column>
-    <b>ID:</b> ${employee.id}
-</t:column:ce>
-<t:column>
-    <b>Name:</b> ${employee.name}
-</t:column>
-<t:column>
-    <b>Age:</b> ${employee.age}
-</t:column>
-<t:column>
-    <b>Address:</b> ${employee.address}
-</t:column>
+<t:grid source="employee" row="employee" add="Actions">
+    <p:Actionscell>
+        <a t:type="PageLink" page="EditEmployee" context="${employee.id}">Edit</a>
+        |
+        <a t:type="PageLink" page="DeleteEmployee" context="${employee.id}"
+           onclick="return confirm('Are you sure?');">Delete</a>
+    </p:Actionscell>
 </t:grid>
 
 </body>

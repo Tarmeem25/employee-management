@@ -1,19 +1,27 @@
 package com.example.employee.pages;
 
+import com.example.employee.components.Header;
 import com.example.employee.entities.Employee;
+import com.example.employee.services.EmployeeService;
+import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.ioc.annotations.Inject;
+
+import java.util.List;
 
 
 public class EmployeeDetails {
     @Property
+    private List<Employee> employees;
+
+    @Property
     private Employee employee;
 
+    @Inject
+    private EmployeeService employeeService;
 
-    void onActivate(int id) {
-        if (id == 1) {
-            employee = new Employee(1, "John Doe", 30, "1234 Elm St");
-        } else if (id == 2) {
-            employee = new Employee(2, "Jane Smith", 25, "5678 Oak St");
-        }
+    void setupRender() {
+        employees = employeeService.getAllEmployees();
     }
+
 }

@@ -1,19 +1,22 @@
     <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
     <head>
-        <title>Login</title>
+        <title>${message:title}</title>
     </head>
     <body>
-    <t:Header title="literal:Welcome to the Login Page" />
-    <h1>Login</h1>
+
+    <h2>Login Page</h2>
     <form t:type="form" t:action="submit">
         <label for="username">Username:</label>
         <input t:id="username" t:value="username" t:type="TextField" type="text" /><br />
+        <br/>
 
         <label for="password">Password:</label>
         <input t:id="password" t:value="password" t:type="TextField" type="password" /><br />
+        <br/>
 
         <input type="submit" value="Login" />
     </form>
+
 
     </body>
     </html>

@@ -1,8 +1,9 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+<head>
+    <title>${companyName}</title>
+</head>
 <body>
-<header>
-    <h1>${title}</h1>
-    <hr/>
-</header>
+<h1>${companyName}</h1>
+<p>${companyAddress}</p>
 </body>
 </html>

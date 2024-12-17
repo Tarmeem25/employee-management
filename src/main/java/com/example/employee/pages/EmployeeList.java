@@ -1,6 +1,7 @@
 package com.example.employee.pages;
 
 import com.example.employee.entities.Employee;
+import com.example.employee.services.EmployeeService;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
@@ -12,14 +13,20 @@ public class EmployeeList {
     @Property
     private Employee employee;
 
-    @Property
-    private List<Employee> employees;
+    @Inject
+    private EmployeeService employeeService;
 
-    void setupRender() {
-        employees = Arrays.asList(
-                new Employee(1, "John Doe", 30, "1234 Elm St"),
-                new Employee(2, "Jane Smith", 25, "5678 Oak St")
-        );
+    @Property
+    private int employeeId;
+
+   void onActivate(int id) {
+       this.employeeId = id;
+       employee = employeeService.getEmployeeById(id);
+   }
+
+    public int onPassivate() {
+        // Pass the ID back so it can be included in the URL
+        return employeeId;
     }
 }
 

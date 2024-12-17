@@ -1,11 +1,25 @@
-<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
 <head>
     <title>Employee Details</title>
 </head>
 <body>
-<t:Header title="literal:Welcome to the EmployeeDetails Page" /><hr/>
+<!--<div t:id="header" t:companyAddress="Test">${companyName}</div>-->
 <h1>Employee Details</h1>
-<t:EmployeeSummary employee="employee"/>
+<a t:type="PageLink" page="AddEmployee">Add Employee</a>
 
+<t:grid source="employees" row="employee" add="Actions">
+    <!-- New Actions Column -->
+    <p:Actionscell>
+        <a t:type="PageLink" page="EmployeeList" context="${employee.id}">View</a>
+        |
+        <a t:type="PageLink" page="EditEmployee" context="${employee.id}">Edit</a>
+        |
+        <a t:type="PageLink" page="DeleteEmployee" context="${employee.id}"
+                   onclick="return confirm('Are you sure?');">Delete</a>
+    </p:Actionscell>
+    <p:empty>
+        <p>There are no users to display; you can <a t:type="PageLink" page="AddEmployee">add some</a>.</p>
+    </p:empty>
+</t:grid>
 </body>
 </html>

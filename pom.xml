@@ -90,13 +90,11 @@
 <!--      <version>3.1.0</version>-->
 <!--      <scope>provided</scope>-->
 <!--    </dependency>-->
-    <dependency>
-      <groupId>org.apache.tapestry</groupId>
-      <artifactId>tapestry5-annotations</artifactId>
-      <version>5.8.2</version>
-    </dependency>
-
-
+<!--    <dependency>-->
+<!--      <groupId>org.apache.tapestry</groupId>-->
+<!--      <artifactId>tapestry5-annotations</artifactId>-->
+<!--      <version>5.8.2</version>-->
+<!--    </dependency>-->
   </dependencies>
   <build>
     <finalName>employee-management-project</finalName>

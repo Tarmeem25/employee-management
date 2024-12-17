@@ -1,11 +1,14 @@
 package com.example.employee.pages;
 
+import com.example.employee.entities.Employee;
+import com.example.employee.services.EmployeeService;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.ioc.annotations.Inject;
 
 public class AddEmployee {
 
     @Property
-    private String name;
+    private String username;
 
     @Property
     private int age;
@@ -13,11 +16,19 @@ public class AddEmployee {
     @Property
     private String address;
 
+    @Property
+    private String password;
 
-    void onSubmit() {
-        // Dummy employee addition logic
-        System.out.println("Employee Added: " + name + ", " + age + ", " + address);
+    @Inject
+    private EmployeeService employeeService;
+
+    public Object onSuccess(){
+        Employee newEmployee = new Employee(username, age, address, password);
+        employeeService.saveEmployee(newEmployee);
+        return EmployeeDetails.class;
     }
-    }
+
+
+}
 
 
