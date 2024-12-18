@@ -4,10 +4,10 @@
     <title>Employee List</title>
 </head>
 <body>
-
+<div t:type="header" t:companyAddress="'123 Main Street'" t:companyName="'Kane Solutions'"></div>
 <h1>Employee List</h1>
 
-<t:grid source="employee" row="employee" add="Actions">
+<t:grid source="employee" row="employee" add="Actions" exclude="Password">
     <p:Actionscell>
         <a t:type="PageLink" page="EditEmployee" context="${employee.id}">Edit</a>
         |

@@ -1,0 +1,27 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
+<head>
+    <title>Edit Employee</title>
+</head>
+<body>
+<div t:type="header" t:companyAddress="'123 Main Street'" t:companyName="'Kane Solutions'"></div>
+<h1>Edit Employee</h1>
+
+<form t:type="form" t:action="submit">
+    <t:errors  style="color:red"></t:errors>
+    <label for="username">Username:</label>
+    <input t:id="username" t:value="employee.username" t:type="TextField" type="text" /><br/>
+
+    <label for="age">Age:</label>
+    <input t:id="age" t:value="employee.age" t:type="TextField" type="number" /><br/>
+
+    <label for="address">Address:</label>
+    <input t:id="address" t:value="employee.address" t:type="TextField" type="text" /><br/>
+
+    <label for="password">Password:</label>
+    <input t:id="password" t:value="employee.password" t:type="PasswordField" /><br/>
+
+    <input type="submit" value="Update Employee"/>
+</form>
+
+</body>
+</html>

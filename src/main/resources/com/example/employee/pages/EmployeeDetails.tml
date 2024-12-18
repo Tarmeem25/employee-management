@@ -3,15 +3,16 @@
     <title>Employee Details</title>
 </head>
 <body>
-<!--<div t:id="header" t:companyAddress="Test">${companyName}</div>-->
+<div t:type="header" t:companyAddress="'123 Main Street'" t:companyName="'Kane Solutions'"></div>
 <h1>Employee Details</h1>
 <a t:type="PageLink" page="AddEmployee">Add Employee</a>
 
-<t:grid source="employees" row="employee" add="Actions">
+<t:grid source="employees" row="employee" add="Actions" exclude="Password" >
+    <p:Idcell>
+        <a t:type="PageLink" page="EmployeeList" context="${employee.id}">${employee.id}</a>
+    </p:Idcell>
     <!-- New Actions Column -->
     <p:Actionscell>
-        <a t:type="PageLink" page="EmployeeList" context="${employee.id}">View</a>
-        |
         <a t:type="PageLink" page="EditEmployee" context="${employee.id}">Edit</a>
         |
         <a t:type="PageLink" page="DeleteEmployee" context="${employee.id}"

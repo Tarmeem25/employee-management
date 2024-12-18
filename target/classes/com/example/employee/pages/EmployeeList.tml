@@ -4,10 +4,10 @@
     <title>Employee List</title>
 </head>
 <body>
-
+<div t:type="header" t:companyAddress="'123 Main Street'" t:companyName="'Kane Solutions'"></div>
 <h1>Employee List</h1>
 
-<t:grid source="employee" row="employee" add="Actions">
+<t:grid source="employee" row="employee" add="Actions" exclude="Password">
     <p:Actionscell>
         <a t:type="PageLink" page="EditEmployee" context="${employee.id}">Edit</a>
         |
@@ -18,19 +18,3 @@
 
 </body>
 </html>
-        <!--<table>-->
-        <!--    <tr>-->
-        <!--        <th>Id</th>-->
-        <!--        <th>Name</th>-->
-        <!--        <th>Age</th>-->
-        <!--        <th>Address</th>-->
-        <!--    </tr>-->
-        <!--    <t:loop source ="employees" value= "employee" >-->
-        <!--        <tr>-->
-        <!--            <td>${employee.id}</td>-->
-        <!--            <td>${employee.name}</td>-->
-        <!--        <td>${employee.age}</td>-->
-        <!--        <td>${employee.address}</td>-->
-        <!--    </tr>-->
-        <!--    </t:loop>-->
-        <!--</table>-->
