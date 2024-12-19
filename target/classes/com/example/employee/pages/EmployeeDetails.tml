@@ -7,7 +7,7 @@
 <h1>Employee Details</h1>
 <a t:type="PageLink" page="AddEmployee">Add Employee</a>
 
-<t:grid source="employees" row="employee" add="Actions" exclude="Password" >
+<t:grid source="employees" row="employee" add="Actions" exclude="Password" rowsPerPage="4" >
     <p:Idcell>
         <a t:type="PageLink" page="EmployeeList" context="${employee.id}">${employee.id}</a>
     </p:Idcell>
