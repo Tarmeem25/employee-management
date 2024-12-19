@@ -22,7 +22,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public List<Employee> getAllEmployees() {
         Session session = sessionFactory.getCurrentSession();
-//        System.out.println(session+"2");
         return session.createQuery("FROM Employee", Employee.class).list();
     }
 
@@ -42,11 +41,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Transactional
     @Override
     public void deleteEmployee(int id) {
-        Session session = sessionFactory.getCurrentSession();
-        Employee employee = session.get(Employee.class, id);
-        if (employee != null) {
-            session.delete(employee);
-        }
+        employeeDao.deleteEmployee(id);
 
     }
     @Transactional

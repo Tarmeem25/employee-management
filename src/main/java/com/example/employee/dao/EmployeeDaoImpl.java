@@ -16,14 +16,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @Override
     public List<Employee> getAllEmployees() {
 
-        return sessionFactory.getCurrentSession().createCriteria(Employee.class).list();
+        return sessionFactory.getCurrentSession()
+                .createQuery("FROM Employee", Employee.class)
+                .list();
     }
 
     @Override
     public Employee getEmployeeById(int id) {
-        return (Employee) sessionFactory.getCurrentSession()
-                .createCriteria(Employee.class)
-                .add(Restrictions.eq("id", id))
+        return sessionFactory.getCurrentSession()
+                .createQuery("FROM Employee e WHERE e.id = :id", Employee.class)
+                .setParameter("id", id)
                 .uniqueResult();
 
     }
@@ -34,11 +36,20 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
+    public void deleteEmployee(int id) {
+        Employee employee = getEmployeeById(id);
+        if (employee != null) {
+            sessionFactory.getCurrentSession().delete(employee);
+        }
+    }
+
+    @Override
     public Employee getEmployeeByUsername(String username) {
-      return (Employee) sessionFactory.getCurrentSession()
-                .createCriteria(Employee.class)
-                .add(Restrictions.eq("username", username))
-                .uniqueResult(); // Returns null if no employee is found
+
+        return (Employee) sessionFactory.getCurrentSession()
+                .createQuery("FROM Employee e WHERE e.username = :username")
+                .setParameter("username", username)
+                .uniqueResult();
 
 
     }
