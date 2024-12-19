@@ -51,7 +51,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 .setParameter("username", username)
                 .uniqueResult();
 
-
     }
 
 
