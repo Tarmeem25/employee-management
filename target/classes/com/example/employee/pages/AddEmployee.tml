@@ -18,6 +18,10 @@
     <label for="address">Address:</label>
     <input t:id="address" t:value="address" t:type="TextField" type="text" /><br />
 
+    <label for="isAdmin">Role: Admin
+        <input t:id="isAdmin" t:value="isAdmin" t:type="Checkbox" type="checkbox"/>
+    </label><br/>
+
 
     <label for="password">Password:</label>
     <input t:id="password" t:value="password" t:type="TextField" type="password" /><br />

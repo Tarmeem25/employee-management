@@ -5,18 +5,35 @@
 <body>
 <div t:type="header" t:companyAddress="'123 Main Street'" t:companyName="'Kane Solutions'"></div>
 <h1>Employee Details</h1>
-<a t:type="PageLink" page="AddEmployee">Add Employee</a>
+<!--only admin can add-->
+<t:if test="isAdmin">
+    <a t:type="PageLink" page="AddEmployee">Add Employee</a>
+</t:if>
+
 
 <t:grid source="employees" row="employee" add="Actions" exclude="Password" rowsPerPage="4" >
     <p:Idcell>
-        <a t:type="PageLink" page="EmployeeList" context="${employee.id}">${employee.id}</a>
+        <t:if test="isAdmin">
+            <a t:type="PageLink" page="EmployeeList" context="${employee.id}">${employee.id}</a>
+        </t:if>
+        <t:if test="!isAdmin">
+            <a t:type="PageLink" page="EmployeeList" context="${employeeId}">${employeeId}</a>
+        </t:if>
+
     </p:Idcell>
     <!-- New Actions Column -->
     <p:Actionscell>
-        <a t:type="PageLink" page="EditEmployee" context="${employee.id}">Edit</a>
-        |
-        <a t:type="PageLink" page="DeleteEmployee" context="${employee.id}"
-                   onclick="return confirm('Are you sure?');">Delete</a>
+<!--        for admin-->
+        <t:if test="isAdmin">
+            <a t:type="PageLink" page="EditEmployee" context="${employee.id}">Edit</a> |
+            <a t:type="PageLink" page="DeleteEmployee" context="${employee.id}"
+               onclick="return confirm('Are you sure?');">Delete</a>
+        </t:if>
+<!--for employee-->
+        <t:if test="!isAdmin">
+            <a t:type="PageLink" page="EmployeeList" context="${employeeId}">View</a>
+        </t:if>
+
     </p:Actionscell>
     <p:empty>
         <p>There are no users to display; you can <a t:type="PageLink" page="AddEmployee">add some</a>.</p>

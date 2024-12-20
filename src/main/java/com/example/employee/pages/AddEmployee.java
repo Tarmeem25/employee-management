@@ -1,11 +1,14 @@
     package com.example.employee.pages;
 
     import com.example.employee.entities.Employee;
+    import com.example.employee.entities.Role;
     import com.example.employee.services.EmployeeService;
+    import com.example.employee.services.RoleService;
     import org.apache.tapestry5.annotations.InjectComponent;
     import org.apache.tapestry5.annotations.Property;
     import org.apache.tapestry5.corelib.components.Form;
     import org.apache.tapestry5.ioc.annotations.Inject;
+    import org.hibernate.type.TrueFalseType;
 
     public class AddEmployee {
 
@@ -21,12 +24,17 @@
         @Property
         private String password;
 
+        @Property
+        private boolean isAdmin;
+
         @Inject
         private EmployeeService employeeService;
 
+        @Inject
+        private RoleService roleService;
+
         @InjectComponent
         private Form form;
-
 
         void onValidateFromForm() {
 
@@ -55,8 +63,9 @@
         }
 
          Object onSuccess(){
-
-                Employee newEmployee = new Employee(username, age, address, password);
+                int roleId = isAdmin ? 1 : 2;
+                Role employeeRole = roleService.findRoleById(roleId);
+                Employee newEmployee = new Employee(username, age, address, password, employeeRole);
                 employeeService.saveEmployee(newEmployee);
                 return EmployeeDetails.class;
 

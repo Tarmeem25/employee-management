@@ -19,6 +19,9 @@ public class EmployeeList {
     @Property
     private int employeeId;
 
+    @Property
+    private boolean isAdmin;
+
    void onActivate(int id) {
        this.employeeId = id;
        employee = employeeService.getEmployeeById(id);

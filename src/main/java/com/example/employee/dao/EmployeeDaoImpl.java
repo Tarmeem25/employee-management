@@ -2,7 +2,6 @@ package com.example.employee.dao;
 
 import com.example.employee.entities.Employee;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

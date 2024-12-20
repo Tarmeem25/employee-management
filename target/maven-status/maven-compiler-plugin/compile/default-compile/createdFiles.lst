@@ -1,9 +1,11 @@
 com\example\employee\pages\EmployeeList.class
+com\example\employee\entities\Role.class
 com\example\employee\services\EmployeeServiceImpl.class
-com\example\employee\pages\AddEmployee.class
-com\example\employee\components\Header.class
 com\example\employee\services\MyEmpModule.class
 com\example\employee\pages\EmployeeDetails.class
 com\example\employee\services\EmployeeService.class
 com\example\employee\entities\Employee.class
 com\example\employee\pages\Login.class
+com\example\employee\pages\AddEmployee.class
+com\example\employee\components\Header.class
+com\example\employee\services\LoginServiceImpl.class

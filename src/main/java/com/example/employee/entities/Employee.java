@@ -6,20 +6,34 @@ import javax.persistence.*;
 @Table
 public class Employee {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-        private String username;
-        private int age;
-        private String address;
-        private String password;
+    private String username;
+    private int age;
+    private String address;
+    private String password;
 
-    public Employee(String username, int age, String address, String password) {
+
+    @ManyToOne
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Employee(String username, int age, String address, String password, Role role) {
         this.username = username;
         this.age = age;
         this.address = address;
         this.password = password;
+        this.role = role;
     }
 
     public int getId() {
@@ -61,11 +75,12 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int id, String username, int age, String address,String password) {
+    public Employee(int id, String username, int age, String address,String password, Role role) {
         this.username = username;
         this.id = id;
         this.age = age;
         this.address = address;
         this.password = password;
+        this.role = role;
     }
 }
