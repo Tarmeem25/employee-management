@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example.employee</groupId>
@@ -84,17 +84,22 @@
       <artifactId>postgresql</artifactId>
       <version>42.7.3</version>
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>javax.servlet</groupId>-->
-<!--      <artifactId>javax.servlet-api</artifactId>-->
-<!--      <version>3.1.0</version>-->
-<!--      <scope>provided</scope>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.apache.tapestry</groupId>-->
-<!--      <artifactId>tapestry5-annotations</artifactId>-->
-<!--      <version>5.8.2</version>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>javax.servlet</groupId>-->
+    <!--      <artifactId>javax.servlet-api</artifactId>-->
+    <!--      <version>3.1.0</version>-->
+    <!--      <scope>provided</scope>-->
+    <!--    </dependency>-->
+        <dependency>
+          <groupId>org.apache.tapestry</groupId>
+          <artifactId>tapestry5-annotations</artifactId>
+          <version>5.7.3</version>
+        </dependency>
+    <dependency>
+      <groupId>org.apache.tapestry</groupId>
+      <artifactId>tapestry-upload</artifactId>
+      <version>5.7.3</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>employee-management-project</finalName>

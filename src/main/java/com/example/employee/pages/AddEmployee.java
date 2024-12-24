@@ -1,78 +1,97 @@
-    package com.example.employee.pages;
+package com.example.employee.pages;
 
-    import com.example.employee.entities.Employee;
-    import com.example.employee.entities.Role;
-    import com.example.employee.services.EmployeeService;
-    import com.example.employee.services.RoleService;
-    import org.apache.tapestry5.annotations.InjectComponent;
-    import org.apache.tapestry5.annotations.Property;
-    import org.apache.tapestry5.corelib.components.Form;
-    import org.apache.tapestry5.ioc.annotations.Inject;
-    import org.hibernate.type.TrueFalseType;
+import com.example.employee.entities.Employee;
+import com.example.employee.entities.Role;
+import com.example.employee.services.EmployeeService;
+import com.example.employee.services.RoleService;
+import org.apache.tapestry5.annotations.InjectComponent;
+import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.corelib.components.Form;
+import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.upload.services.UploadedFile;
 
-    public class AddEmployee {
+import java.io.File;
+import java.util.Date;
 
-        @Property
-        private String username;
+public class AddEmployee {
 
-        @Property
-        private int age;
+    @Property
+    private String username;
 
-        @Property
-        private String address;
+    @Property
+    private int age;
 
-        @Property
-        private String password;
+    @Property
+    private String gender;
 
-        @Property
-        private boolean isAdmin;
+    @Property
+    private String address;
 
-        @Inject
-        private EmployeeService employeeService;
+    @Property
+    private String password;
 
-        @Inject
-        private RoleService roleService;
+    @Property
+    private Date dob;
 
-        @InjectComponent
-        private Form form;
+    @Property
+    private boolean isAdmin;
 
-        void onValidateFromForm() {
+    @Property
+    private UploadedFile uploadedImage;
 
-            if (username == null || username.isEmpty()) {
-                form.recordError("Username is required.");
-            } else if (!username.matches("^[a-zA-Z][a-zA-Z0-9]*$")) {
-                form.recordError("Username must start with a letter and can contain numbers.");
-            } else if (username.length() < 3 || username.length() > 20) {
-                form.recordError("Username must be between 3 and 20 characters.");
-            } else if (!employeeService.isUsernameUnique(username)) {
-                form.recordError("Username already exists. Please choose a different one.");
-            }
 
-            if (age < 18 || age > 65) {
-                form.recordError("Age must be between 18 and 65.");
-            }
+    @Inject
+    private EmployeeService employeeService;
 
-            if (address == null || address.length() < 5 || address.length() > 50) {
-                form.recordError("Address must be between 5 and 50 characters.");
-            }
+    @Inject
+    private RoleService roleService;
 
-            if (password == null || password.length() < 6) {
-                form.recordError("Password must be at least 6 characters.");
-            }
+    @InjectComponent
+    private Form form;
 
+    void onValidateFromForm() {
+
+        if (username == null || username.isEmpty()) {
+            form.recordError("Username is required.");
+        } else if (!username.matches("^[a-zA-Z][a-zA-Z0-9]*$")) {
+            form.recordError("Username must start with a letter and can contain numbers.");
+        } else if (username.length() < 3 || username.length() > 20) {
+            form.recordError("Username must be between 3 and 20 characters.");
+        } else if (!employeeService.isUsernameUnique(username)) {
+            form.recordError("Username already exists. Please choose a different one.");
         }
 
-         Object onSuccess(){
-                int roleId = isAdmin ? 1 : 2;
-                Role employeeRole = roleService.findRoleById(roleId);
-                Employee newEmployee = new Employee(username, age, address, password, employeeRole);
-                employeeService.saveEmployee(newEmployee);
-                return EmployeeDetails.class;
-
-
+        if (age < 18 || age > 65) {
+            form.recordError("Age must be between 18 and 65.");
         }
+
+        if (address == null || address.length() < 5 || address.length() > 50) {
+            form.recordError("Address must be between 5 and 50 characters.");
+        }
+
+        if (password == null || password.length() < 6) {
+            form.recordError("Password must be at least 6 characters.");
+        }
+        // for dob
+
+    }
+
+    Object onSuccess(){
+        int roleId = isAdmin ? 1 : 2;
+        Role employeeRole = roleService.findRoleById(roleId);
+        Employee newEmployee = new Employee(username, age, address, password, employeeRole,dob,gender);
+        if (uploadedImage != null) {
+
+            String filePath = "C:\\Users\\tarme\\IdeaProjects\\employee-management\\src\\main\\webapp\\images\\" + uploadedImage.getFileName();
+            uploadedImage.write((new File(filePath)));
+            newEmployee.setImagePath(filePath);
+        }
+
+        employeeService.saveEmployee(newEmployee);
+        return EmployeeDetails.class;
 
 
     }
 
 
+}

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table
+@Table(name="permissions")
 public class Permission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

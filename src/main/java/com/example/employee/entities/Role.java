@@ -16,7 +16,7 @@ import javax.persistence.JoinColumn;
 import java.util.Set;
 
 @Entity
-@Table
+@Table(name = "roles")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

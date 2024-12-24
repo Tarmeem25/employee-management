@@ -30,8 +30,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public void saveEmployee(Employee employee) {
+    public void saveEmployee(Employee employee) {//parameter String imageUrl
+        //employee.setImageUrl();
         sessionFactory.getCurrentSession().saveOrUpdate(employee);
+
     }
 
     @Override

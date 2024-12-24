@@ -1,13 +1,16 @@
-<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
 <head>
     <title>Add Employee</title>
 </head>
 <body>
-<t:Header title="literal:Welcome to the AddEmployee Page" /><hr/>
+<div t:type="header" t:companyAddress="'123 Main Street'" t:companyName="'Kane Solutions'"></div>
 <h1>Add Employee</h1>
-<form t:type="form" t:action="submit">
-    <label for="name">Name:</label>
-    <input t:id="name" t:value="name" t:type="TextField" type="text" /><br />
+
+<t:form t:id="form" t:action="submit">
+    <t:errors  style="color:red;"  />
+    <label for="username">Username:</label>
+    <input t:id="username" t:value="username" t:type="TextField" type="text" /><br />
+
 
     <label for="age">Age:</label>
     <input t:id="age" t:value="age" t:type="TextField"  type="number" /><br />
@@ -15,7 +18,19 @@
     <label for="address">Address:</label>
     <input t:id="address" t:value="address" t:type="TextField" type="text" /><br />
 
+    <label for="isAdmin">Role: Admin
+        <input t:id="isAdmin" t:value="isAdmin" t:type="Checkbox" type="checkbox"/>
+    </label><br/>
+
+    <label for="image">Upload Image:</label>
+    <input t:id="image" type="file" /><br />
+
+    <label for="password">Password:</label>
+    <input t:id="password" t:value="password" t:type="TextField" type="password" /><br />
+
+
     <input type="submit" value="Add Employee" />
-</form>
+
+</t:form>
 </body>
 </html>

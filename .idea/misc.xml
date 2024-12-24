@@ -12,5 +12,5 @@
     <resource url="http://tapestry.apache.org/schema/tapestry_5_4.xsd " location="$PROJECT_DIR$" />
     <resource url="http://www.w3.org/2001/XMLSchema-Instance" location="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" default="true" project-jdk-name="15" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" default="true" project-jdk-name="corretto-15" project-jdk-type="JavaSDK" />
 </project>

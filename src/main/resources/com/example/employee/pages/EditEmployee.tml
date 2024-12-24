@@ -4,12 +4,24 @@
 </head>
 <body>
 <div t:type="header" t:companyAddress="'123 Main Street'" t:companyName="'Kane Solutions'"></div>
+<div style="position: absolute; top: 10px; right: 10px;">
+    <t:PageLink page="Login">[CLOSE]</t:PageLink>
+</div>
 <h1>Edit Employee</h1>
 
 <form t:type="form" t:action="submit">
     <t:errors  style="color:red"></t:errors>
     <label for="username">Username:</label>
     <input t:id="username" t:value="employee.username" t:type="TextField" type="text" /><br/>
+
+    <label for="gender">Gender:</label>
+    <select t:id="gender" name="gender" t:type="TextField">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select>
+
+    <label for="dob">Date of Birth:</label>
+    <t:datefield t:id="dob" t:value="employee.dob"/>
 
     <label for="age">Age:</label>
     <input t:id="age" t:value="employee.age" t:type="TextField" type="number" /><br/>

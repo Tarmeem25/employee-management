@@ -1,6 +1,9 @@
 package com.example.employee.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table
@@ -15,10 +18,39 @@ public class Employee {
     private String address;
     private String password;
 
+    private String gender;
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    private String imagePath;
+
+    private Date dob;
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
 
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 
     public Role getRole() {
         return role;
@@ -28,12 +60,14 @@ public class Employee {
         this.role = role;
     }
 
-    public Employee(String username, int age, String address, String password, Role role) {
+    public Employee(String username, int age, String address, String password, Role role,Date dob, String gender) {
         this.username = username;
         this.age = age;
         this.address = address;
         this.password = password;
         this.role = role;
+        this.dob = dob;
+        this.gender = gender;
     }
 
     public int getId() {
@@ -75,12 +109,4 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int id, String username, int age, String address,String password, Role role) {
-        this.username = username;
-        this.id = id;
-        this.age = age;
-        this.address = address;
-        this.password = password;
-        this.role = role;
-    }
 }
