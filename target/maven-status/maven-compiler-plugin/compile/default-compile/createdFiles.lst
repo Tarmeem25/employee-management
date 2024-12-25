@@ -15,7 +15,6 @@ com\example\employee\services\RoleServiceImpl.class
 com\example\employee\pages\AddEmployee.class
 com\example\employee\pages\EditEmployee.class
 com\example\employee\components\Header.class
-com\example\employee\components\EmpBday.class
 com\example\employee\components\WishBanner.class
 com\example\employee\pages\DeleteEmployee.class
 com\example\employee\dao\EmployeeDaoImpl.class

@@ -16,12 +16,11 @@ public class MyEmpModule
         binder.bind(EmployeeService.class, EmployeeServiceImpl.class);
     }
 
-
     public static void contributeApplicationDefaults(MappedConfiguration<String,String> configuration)
     {
         configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en,fr,de");
         configuration.add(SymbolConstants.FILE_CHECK_INTERVAL, "10 m");
-
+        configuration.add("tapestry.javascript.support", "true");
 
     }
 

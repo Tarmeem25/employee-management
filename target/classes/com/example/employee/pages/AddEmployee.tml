@@ -15,9 +15,8 @@
         <input t:id="username" t:value="username" t:type="TextField" type="text" /><br />
 
         <label for="gender">Gender:</label>
-        <select t:id="gender" name="gender" t:type="TextField">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
+        <select t:id="gender" name="gender" t:type="select" model="literal:Male,Female">
+
         </select>
 
         <label for="dob">Date of Birth:</label>

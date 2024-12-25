@@ -4,6 +4,7 @@
     </head>
     <body>
     <div t:type="header" t:companyAddress="'123 Main Street'" t:companyName="'Kane Solutions'"></div>
+
     <h2>Login Page</h2>
 
     <div t:if="errorMessage" style="color:red">${errorMessage}</div>

@@ -11,6 +11,10 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.upload.services.UploadedFile;
 
 import java.io.File;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class AddEmployee {
@@ -72,7 +76,31 @@ public class AddEmployee {
         if (password == null || password.length() < 6) {
             form.recordError("Password must be at least 6 characters.");
         }
-        // for dob
+        if (gender == null || gender.isEmpty() || (!gender.equalsIgnoreCase("Male") && !gender.equalsIgnoreCase("Female"))) {
+            form.recordError("Please select a valid gender.");
+        }
+
+        if (dob != null) {
+
+            LocalDate birthDate = dob.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            int calculatedAge = Period.between(birthDate, LocalDate.now()).getYears();
+
+
+            if (calculatedAge != age) {
+                form.recordError("The age provided does not match the date of birth.");
+            }
+            if (birthDate.isEqual(LocalDate.now())) {
+                form.recordError("Date of birth cannot be today's date.");
+            }
+            LocalDate maxDob = LocalDate.now().minus(18, ChronoUnit.YEARS); // 18 years ago
+            LocalDate minDob = LocalDate.now().minus(65, ChronoUnit.YEARS); // 65 years ago
+
+            if (birthDate.isAfter(maxDob) || birthDate.isBefore(minDob)) {
+                form.recordError("Date of birth must be between 18 and 65 years ago.");
+            }
+        }
+
+
 
     }
 
@@ -82,8 +110,9 @@ public class AddEmployee {
         Employee newEmployee = new Employee(username, age, address, password, employeeRole,dob,gender);
         if (uploadedImage != null) {
 
-            String filePath = "C:\\Users\\tarme\\IdeaProjects\\employee-management\\src\\main\\webapp\\images\\" + uploadedImage.getFileName();
-            uploadedImage.write((new File(filePath)));
+            String filePath = "\\images/" + uploadedImage.getFileName();
+            File destinationFile = new File("src/main/webapp/" + filePath);
+            uploadedImage.write(destinationFile);
             newEmployee.setImagePath(filePath);
         }
 
