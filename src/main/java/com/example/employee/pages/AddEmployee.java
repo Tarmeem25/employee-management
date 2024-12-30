@@ -113,7 +113,7 @@ public class AddEmployee {
             String filePath = "C:/Users/tarme/IdeaProjects/employee-management/src/main/webapp/images/" + uploadedImage.getFileName();
             File destinationFile = new File(filePath);
             uploadedImage.write(destinationFile);
-            newEmployee.setImagePath(filePath);
+            newEmployee.setImagePath("images/"+uploadedImage.getFileName());
         }
 
         employeeService.saveEmployee(newEmployee);
