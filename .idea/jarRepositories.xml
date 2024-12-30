@@ -16,5 +16,10 @@
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="io.cloudrepo.maven.releases" />
+      <option name="name" value="CloudRepo Release Repositories" />
+      <option name="url" value="https://kanelabs.mycloudrepo.io/repositories/releases" />
+    </remote-repository>
   </component>
 </project>

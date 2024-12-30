@@ -3,9 +3,12 @@ package com.example.employee.pages;
 import com.example.employee.entities.Employee;
 import com.example.employee.services.EmployeeService;
 import org.apache.tapestry5.PersistenceConstants;
+import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.corelib.components.Zone;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.services.ajax.AjaxResponseRenderer;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -35,7 +38,12 @@ public class EmployeeDetails {
     @Property
     @Persist(PersistenceConstants.FLASH)
     private String feedbackMessage;
-
+    @InjectComponent
+    private Zone imageZone;
+    @Property
+    private String imagePath;
+    @Inject
+    private AjaxResponseRenderer ajaxResponseRenderer;
 
     void setupRender() {
 
@@ -82,8 +90,13 @@ public class EmployeeDetails {
             employeeService.saveEmployee(employee);
 
         }
-        }
+    }
+
+    void onActionFromViewImage(int employeeId){
+        Employee employee = employeeService.getEmployeeById(employeeId);
+        imagePath = employee.getImagePath();
+        ajaxResponseRenderer.addRender(imageZone);
+
+    }
 
 }
-
-

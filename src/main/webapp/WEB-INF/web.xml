@@ -21,6 +21,12 @@
       com.example.employee.services.MyEmpModule
     </param-value>
   </context-param>
+<!--  remove-->
+  <init-param>
+    <param-name>tapestry.modules</param-name>
+    <param-value>org.got5.tapestry5.jquery.JQueryModule</param-value>
+  </init-param>
+
 
   <filter>
     <filter-name>MyEmployee</filter-name>

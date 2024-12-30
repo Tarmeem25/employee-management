@@ -1,24 +1,10 @@
-<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter" xmlns:j="tapestry-library:jquery">
 <head>
     <title>Employee Details</title>
 </head>
-<script>
-    function viewImage(imagePath) {
-
-        const popupImage = document.getElementById("popupImage");
-        popupImage.src = imagePath;
-
-
-        document.getElementById("imagePopup").style.display = "block";
-        document.getElementById("popupOverlay").style.display = "block";
-    }
-
-    function closeImagePopup() {
-        // Hide the popup and overlay
-        document.getElementById("imagePopup").style.display = "none";
-        document.getElementById("popupOverlay").style.display = "none";
-    }
-</script>
+<!--<script>-->
+<!--    popupImage.src = ${imagePath}-->
+<!--</script>-->
 <body>
 <div t:type="header" t:companyAddress="'123 Main Street'" t:companyName="'Kane Solutions'"></div>
 <div style="position: absolute; top: 10px; right: 10px;">
@@ -46,7 +32,7 @@
     </p:Idcell>
 
     <p:Rolecell>
-            <strong>${employee.role.role_name}</strong>
+        <strong>${employee.role.role_name}</strong>
     </p:Rolecell>
 
     <p:Actionscell>
@@ -67,7 +53,8 @@
     </p:Actionscell>
 
     <p:ImagePathcell>
-        <a href = "#" onclick="viewImage('${employee.imagePath}'); return false;" >[IMAGE]</a>
+
+        <a t:id="viewImage" t:context="${employee.id}" t:type="jquery/dialogajaxlink" t:dialog="imagedialog" zone="imageZone">[IMAGE]</a>
     </p:ImagePathcell>
     <p:empty>
         <p>There are no users to display; you can <a t:type="PageLink" page="AddEmployee">add some</a>.</p>
@@ -77,12 +64,14 @@
 <t:if test="${feedbackMessage}">
     <p>${feedbackMessage}</p>
 </t:if>
-<div id="imagePopup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:20px; border:1px solid #ccc; z-index:1000; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-    <img id="popupImage"  alt="Employee Image" style="max-width:500px; max-height:500px;" />
-    <button onclick="closeImagePopup()" style="margin-top:10px; padding:5px 10px; background-color:#007bff; color:white; border:none; border-radius:4px; cursor:pointer;">Close</button>
-</div>
 
-<div id="popupOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999;" onclick="closeImagePopup()"></div>
+
+<t:jquery.dialog t:clientid="imagedialog" t:zone="imageZone" >
+    <t:zone t:id="imageZone">
+            <img src="${imagePath}" alt="Employee Image" style="width: 150px; height: 150px; object-fit: cover;" />
+    </t:zone>
+
+</t:jquery.dialog>
 
 </body>
 </html>

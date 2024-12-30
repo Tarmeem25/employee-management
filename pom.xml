@@ -6,7 +6,12 @@
   <groupId>com.example.employee</groupId>
   <artifactId>employee-management-project</artifactId>
   <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+    <version>1.0-SNAPSHOT</version>
   <name>employee-management-project</name>
   <url>https://maven.apache.org</url>
 
@@ -20,7 +25,7 @@
     <dependency>
       <groupId>org.apache.tapestry</groupId>
       <artifactId>tapestry-core</artifactId>
-      <version>5.7.3</version>
+      <version>5.8.6</version>
     </dependency>
     <dependency>
       <groupId>org.javassist</groupId>
@@ -30,41 +35,41 @@
     <dependency>
       <groupId>org.apache.tapestry</groupId>
       <artifactId>tapestry-ioc</artifactId>
-      <version>5.7.3</version>
+      <version>5.8.6</version>
     </dependency>
     <dependency>
       <groupId>org.apache.tapestry</groupId>
       <artifactId>tapestry-spring</artifactId>
-      <version>5.7.3</version>
+      <version>5.8.6</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
-      <version>5.3.2</version> <!-- Replace with your Spring version -->
+      <version>5.3.22</version> <!-- Replace with your Spring version -->
     </dependency>
 
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
-      <version>5.3.2</version>
+      <version>5.3.22</version>
     </dependency>
 
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-tx</artifactId>
-      <version>5.3.2</version>
+      <version>5.3.22</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-orm</artifactId>
-      <version>5.3.2</version> <!-- Replace with the appropriate version -->
+      <version>5.3.22</version> <!-- Replace with the appropriate version -->
     </dependency>
 
     <!-- Spring JDBC for DataSource management -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-jdbc</artifactId>
-      <version>5.3.2</version> <!-- Replace with the appropriate version -->
+      <version>5.3.22</version> <!-- Replace with the appropriate version -->
     </dependency>
 
     <dependency>
@@ -78,7 +83,22 @@
       <artifactId>hibernate-core</artifactId>
       <version>5.6.15.Final</version>
     </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.got5</groupId>-->
+<!--      <artifactId>tapestry5-jquery</artifactId>-->
+<!--      <version>4.1.1</version>-->
+<!--      <exclusions>-->
+<!--        <exclusion>-->
+<!--          <artifactId>commons-io</artifactId>-->
+<!--          <groupId>commons-io</groupId>-->
+<!--        </exclusion>-->
+<!--        <exclusion>-->
+<!--          <artifactId>tapestry-core</artifactId>-->
+<!--          <groupId>org.apache.tapestry</groupId>-->
+<!--        </exclusion>-->
 
+<!--      </exclusions>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
@@ -93,13 +113,30 @@
         <dependency>
           <groupId>org.apache.tapestry</groupId>
           <artifactId>tapestry5-annotations</artifactId>
-          <version>5.7.3</version>
+          <version>5.8.6</version>
         </dependency>
     <dependency>
       <groupId>org.apache.tapestry</groupId>
       <artifactId>tapestry-upload</artifactId>
-      <version>5.7.3</version>
+      <version>5.8.6</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.got5</groupId>
+      <artifactId>tapestry5-jquery</artifactId>
+      <version>4.2.2-IMS</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>commons-io</artifactId>
+          <groupId>commons-io</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>tapestry-core</artifactId>
+          <groupId>org.apache.tapestry</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>employee-management-project</finalName>
@@ -127,14 +164,27 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.10.1</version> <!-- Latest version -->
-        <configuration>
-          <source>15</source> <!-- Set to Java 15 -->
-          <target>15</target>
-        </configuration>
+        <version>3.10.1</version>
+<!--        <configuration>-->
+<!--          <source>9</source>-->
+<!--          <target>9</target>-->
+<!--        </configuration>-->
       </plugin>
 
 
     </plugins>
   </build>
+  <repositories>
+    <repository>
+      <id>io.cloudrepo.maven.releases</id>
+      <name>CloudRepo Release Repositories</name>
+      <url>https://kanelabs.mycloudrepo.io/repositories/releases</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
 </project>

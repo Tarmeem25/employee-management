@@ -20,7 +20,6 @@ public class MyEmpModule
     {
         configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en,fr,de");
         configuration.add(SymbolConstants.FILE_CHECK_INTERVAL, "10 m");
-        configuration.add("tapestry.javascript.support", "true");
 
     }
 

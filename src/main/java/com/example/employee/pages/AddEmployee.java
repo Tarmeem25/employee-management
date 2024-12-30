@@ -110,8 +110,8 @@ public class AddEmployee {
         Employee newEmployee = new Employee(username, age, address, password, employeeRole,dob,gender);
         if (uploadedImage != null) {
 
-            String filePath = "\\images/" + uploadedImage.getFileName();
-            File destinationFile = new File("src/main/webapp/" + filePath);
+            String filePath = "C:/Users/tarme/IdeaProjects/employee-management/src/main/webapp/images/" + uploadedImage.getFileName();
+            File destinationFile = new File(filePath);
             uploadedImage.write(destinationFile);
             newEmployee.setImagePath(filePath);
         }

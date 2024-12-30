@@ -1,6 +1,0 @@
-
-<div>
-<h2>${companyName}</h2>
-<p>Address : ${companyAddress}</p>
-</div>
-
