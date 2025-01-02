@@ -12,4 +12,8 @@ public interface EmployeeDao {
     void deleteEmployee(int id);
     Employee getEmployeeByUsername(String username);
 
+    List<Employee> searchEmployee(String query);
+
+    List<String> getEmployeeSuggestions(String query);
+
 }

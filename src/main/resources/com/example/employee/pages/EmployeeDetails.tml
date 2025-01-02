@@ -16,10 +16,11 @@
 <t:if test="isAdmin">
     <a t:type="PageLink" page="AddEmployee">Add Employee</a>
 </t:if>
+    <a t:type="PageLink" page="EmployeeSearch">Search Employee</a>
 
 <t:EmpBday employeeId="employee.id" />
 
-<t:grid source="employees" row="employee" reorder="Id,Username,Age,Dob,Gender,Address,Role,ImagePath,Actions" add="Role,Actions" exclude="Password" rowsPerPage="4"  >
+<t:grid source="employees" row="employee" reorder="Id,Username,Age,Dob,Gender,Address,Role,ImagePath,Actions" add="Role,Actions" exclude="Password,SearchVector" rowsPerPage="4"  >
     <p:Idcell>
         <t:if test="isAdmin">
             <a t:type="PageLink" page="EmployeeList" context="${employee.id}">${employee.id}</a>

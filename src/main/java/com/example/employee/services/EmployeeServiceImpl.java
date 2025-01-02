@@ -2,7 +2,6 @@ package com.example.employee.services;
 
 import com.example.employee.dao.EmployeeDao;
 import com.example.employee.entities.Employee;
-import org.apache.tapestry5.ioc.annotations.Inject;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private SessionFactory sessionFactory;
     @Autowired
     private EmployeeDao employeeDao;
+
 
     @Transactional
     @Override
@@ -49,4 +49,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     public boolean isUsernameUnique(String username) {
         return employeeDao.getEmployeeByUsername(username) == null;
     }
+
+    @Transactional
+    @Override
+    public List<Employee> searchEmployee(String query){
+        return employeeDao.searchEmployee(query);
+    }
+
+    @Transactional
+    @Override
+    public List<String> getEmployeeSuggestions(String query) {
+        return employeeDao.getEmployeeSuggestions(query);
+    }
+
 }

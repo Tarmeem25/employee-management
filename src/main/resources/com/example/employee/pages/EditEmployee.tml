@@ -27,6 +27,9 @@
     <label for="address">Address:</label>
     <input t:id="address" t:value="employee.address" t:type="TextField" type="text" /><br/>
 
+    <label for="uploadedImage">Upload Image:</label>
+    <input t:id="uploadedImage" t:value="uploadedImage" t:type="upload"  /><br />
+
     <label for="password">Password:</label>
     <input t:id="password" t:value="employee.password" t:type="PasswordField" /><br/>
 

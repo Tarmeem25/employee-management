@@ -14,4 +14,9 @@ public interface EmployeeService {
     void deleteEmployee(int id);
 
     boolean isUsernameUnique(String username);
+
+    List<Employee> searchEmployee(String query);
+
+
+    List<String> getEmployeeSuggestions(String query);
 }

@@ -6,6 +6,7 @@ import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.upload.services.UploadedFile;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -22,6 +23,9 @@ public class EditEmployee {
 
     @Property
     private int employeeId;
+
+    @Property
+    private UploadedFile uploadedImage;
 
     @InjectComponent
     private Form form;

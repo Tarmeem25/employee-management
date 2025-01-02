@@ -1,7 +1,5 @@
 package com.example.employee.entities;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -43,6 +41,18 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
+
+    @Column(name="search_vector")
+    @Transient
+    private String searchVector;
+
+    public String getSearchVector() {
+        return searchVector;
+    }
+
+    public void setSearchVector(String searchVector) {
+        this.searchVector = searchVector;
+    }
 
     public String getImagePath() {
         return imagePath;
